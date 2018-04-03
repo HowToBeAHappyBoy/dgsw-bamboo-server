@@ -8,4 +8,4 @@ let AfterPost=Schema({
 },{
     collection:"AfterPost"
 });
-module.exports=mongoose.model('AfterPost',AfterPost);
+module.exports=mongoose.model('aPost',AfterPost);

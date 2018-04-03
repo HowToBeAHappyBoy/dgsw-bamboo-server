@@ -9,4 +9,4 @@ let BeforePost=Schema({
 },{
     collection:"BeforePost"
 });
-module.exports=mongoose.model('BeforePost',BeforePost);
+module.exports=mongoose.model('bPost',BeforePost);
