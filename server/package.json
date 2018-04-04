@@ -13,8 +13,10 @@
     "body-parser": "^1.18.2",
     "cookie-parser": "^1.4.3",
     "cors": "^2.8.4",
-    "fb": "^2.0.0",
+    "crypto": "^1.0.1",
     "express": "^4.16.3",
+    "fb": "^2.0.0",
+    "jsonwebtoken": "^8.2.0",
     "mongoose": "^5.0.12",
     "morgan": "^1.9.0"
   }

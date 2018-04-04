@@ -1,5 +1,5 @@
-const aPost=require('../../database/model/After_post')
-const bPost=require('../../database/model/Before_post')
+const aPost=require('../../../database/model/After_post')
+const bPost=require('../../../database/model/Before_post')
 
 exports.readPost=async (req,res)=>{
     const id=parseInt(req.params.id);

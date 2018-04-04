@@ -1,9 +1,9 @@
-const aPost=require('../../database/model/After_post')
-const bPost=require('../../database/model/Before_post')
+const aPost=require('../../../database/model/After_post')
+const bPost=require('../../../database/model/Before_post')
 const fb=require('fb');
 const {
     accessToken
-}=require('../../config.json');
+}=require('../../../config.json');
 fb.setAccessToken(accessToken);
 
 
