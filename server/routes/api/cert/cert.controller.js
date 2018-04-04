@@ -18,10 +18,12 @@ exports.signup= async (req,res)=>{
             return res.status(409).json(result);
         }
         const signupedAdmin=await Admin.signup(id,pw,name);
+        const token=await signupedAdmin.urgentToken();
         const result={
             "status":201,
             "code":1,
-            "desc":"successful signup"
+            "desc":"successful signup",
+            "token":token
         }
         return res.status(201).json(result);
     }catch(error){
