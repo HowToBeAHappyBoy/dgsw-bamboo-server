@@ -6,7 +6,11 @@ const bodyParser = require('body-parser');
 const cookieParser = require('cookie-parser');
 const morgan = require('morgan');
 const cors = require('cors');
-
+const fb=require('fb');
+const {
+    accessToken
+}=require('./config.json');
+fb.setAccessToken({accessToken});
 app.use(morgan('dev'));
 
 app.use(cors({
