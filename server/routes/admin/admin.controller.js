@@ -1,26 +1,6 @@
 const aPost=require('../../database/model/After_post')
 const bPost=require('../../database/model/Before_post')
 
-lastId= async ()=>{
-    try{
-        let id=await aPost.findOne().sort({
-            "idx":1
-        });
-        console.log(id);
-        let result={
-            code:1,
-            id:id
-        };
-        return result;
-    }catch(error){
-        console.log(error);
-        let result={
-            code:0,
-            desc:error
-        }
-        return result;
-    }
-}
 
 exports.readPost=async (req,res) =>{
     try{
@@ -44,23 +24,25 @@ exports.allow=async (req,res)=>{
         const post=await bPost.find({
             "idx":id
         });
-        if(post==null){
+        if(post==false){
             return res.sendStatus(204);
         }
-        console.log(post);
+        let idx=await aPost.find({}).sort({ "idx":-1 }).limit(1); idx=idx[0].idx+1;
+        const desc=post[0].desc;
+        const writeDate=post[0].writeDate;
+        const allowed=await aPost.create({
+            idx,
+            desc,
+            writeDate
+        });
+        const update=await bPost.update({"idx":id},{$set:{"isAllow":true}});
+        return res.sendStatus(201);
     }catch(error){
         console.log(error);
-        res.sendstatus(500);
+        return res.sendstatus(500);
     }
 }
 
-exports.hello=(req,res)=>{
+exports.reject=async (req,res)=>{
     const id=req.params.id;
-    console.log(id);
-    res.send('hello');
-}
-exports.phello=(req,res)=>{
-    const id=req.body.id||req.query.id;
-    console.log(id);
-    res,send('hello');
 }

@@ -1,22 +1,10 @@
 const aPost=require('../../database/model/After_post')
 const bPost=require('../../database/model/Before_post')
-lastId= async ()=>{
-    try{
-        let id=await bPost.find().sort({
-            "idx":-1
-        });
-        console.log('잉');
-        return id;
-    }catch(error){
-        
-        return 0;
-    }
-}
+
 exports.readPost=async (req,res)=>{
-    let id=req.params.id;
     try{
-        const post=await aPost.find().sort({ "idx":-1 }).limit(5).skip(id);
-        if(post==null){
+        const post=await aPost.find().sort({ "idx":-1 });
+        if(post==false){
             return res.sendStatus(204);
         }
 
@@ -28,18 +16,18 @@ exports.readPost=async (req,res)=>{
 }
 
 exports.sendPost=async (req,res)=>{
-    const idx=lastId();
-    const desc=req.params.desc;
-    const writeDate=new Date();
-    const isAllow=false;
     try{
+        let id=await bPost.find().sort({ "idx":-1 }).limit(1);
+        const idx=id[0].idx+1;
+        const desc=req.body.desc;
+        const writedDate=new Date().toLocaleString();
+        const isAllow=false;
         const post=await bPost.create({
             idx,
             desc,
-            writeDate,
+            writedDate,
             isAllow
         });
-
         return res.sendStatus(201);
     }catch(error){
         console.log(error);

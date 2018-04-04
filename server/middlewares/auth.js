@@ -1,7 +1,7 @@
 const mongoose=require('mongoose');
 const admin=require('../database/model/admin');
 const authFunc=async (req,res,next)=>{
-    const token=req.body.token||req.query.token;
+    const token=req.headers['authorization'];
     if(!token){
         return res.status(401).end();
     }
