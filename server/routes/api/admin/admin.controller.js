@@ -10,7 +10,7 @@ fb.setAccessToken(accessToken);
 exports.readPost=async (req,res) =>{
     const id=parseInt(req.params.id);
     try{
-        const post=await bPost.find({
+        let post=await bPost.find({
             "isAllow":false
         }).sort({ "idx":-1 }).limit(5).skip(id);
         if(post==false){
@@ -19,12 +19,22 @@ exports.readPost=async (req,res) =>{
                 "code":0,
                 "desc":"result not found"
             };
+        let posted=new Array(post.length);
+        for(let i=0;i<post.length;i++){
+            let writeDate=post[i].writeDate.toLocaleString();
+            posted[i]={
+                "idx":post[i].idx,
+                "desc":post[i].desc,
+                "writeDate":writeDate,
+                "isAllow":post[i].isAllow
+            }
+        }
             return res.status(204).json(result);
         }
         const result={
             "status":200,
             "code":1,
-            "data":post,
+            posted,
             "desc":"successful request"
         };
         res.status(200).json(result);
@@ -33,7 +43,7 @@ exports.readPost=async (req,res) =>{
             "status":500,
             "code":0,
             "desc":"unknown error 서지녁에게 문의할 것",
-            "error":error
+            "error":error.message
         };
         res.status(500).json(result);
     }

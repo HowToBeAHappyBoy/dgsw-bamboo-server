@@ -4,7 +4,7 @@ const bPost=require('../../../database/model/Before_post')
 exports.readPost=async (req,res)=>{
     const id=parseInt(req.params.id);
     try{
-        const post=await aPost.find().sort({ "idx":-1 }).limit(5).skip(id);
+        let post=await aPost.find().sort({ "idx":-1 }).limit(5).skip(id);
         if(post==false){
             const result={
                 "status":204,
@@ -13,11 +13,24 @@ exports.readPost=async (req,res)=>{
             };
             return res.status(204).json(result);
         }
-
+        let posted=new Array(post.length);
+        for(let i=0;i<post.length;i++){
+            //데이트 포맷 바꿈 다른 방법 있어요 이거?
+            let writeDate=post[i].writeDate.toLocaleString();
+            let allowDate=post[i].allowDate.toLocaleString();
+            //아무리 해도 접근이 안 돼서 걍 배열 새로 만듦
+            posted[i]={
+                "idx":post[i].idx,
+                "desc":post[i].desc,
+                "writeDate":writeDate,
+                "allowDate":allowDate,
+                "isAllow":post[i].isAllow
+            }
+        }
         const result={
             "status":200,
             "code":1,
-            "data":post,
+            posted,
             "desc":"successful request"
         };
         res.status(200).json(result);
@@ -28,6 +41,7 @@ exports.readPost=async (req,res)=>{
             "desc":"unknown error 서지녁에게 문의할 것",
             "error":error
         };
+        console.log(error);
         res.status(500).json(result);
     }
 }
