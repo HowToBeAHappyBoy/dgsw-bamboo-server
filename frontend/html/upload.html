@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="bootstrap-3.3.2-dist/bootstrap-3.3.2-dist/css/a.css">
+    <link rel="stylesheet" href="bootstrap-3.3.2-dist/bootstrap-3.3.2-dist/css/bootstrap.css" type="text/css">
+    <link rel="stylesheet" href="bootstrap-3.3.2-dist/bootstrap-3.3.2-dist/css/b.css">
+    <script type="text/javascript" src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+    <script>
+        function a() {
+            alert('정말 로그아웃 하시겠읍니까?');
+            b()
+        }
+        function b() {
+            window.open('about:blank','_parent').parent.close();
+        }
+    </script>
+    <script type="text/javascript">
+        $(function() {
+            $("#imgInp").on('change', function(){
+                readURL(this);
+            });
+        });
+
+        function readURL(input) {
+            if (input.files && input.files[0]) {
+                var reader = new FileReader();
+
+                reader.onload = function (e) {
+                    $('#blah').attr('src', e.target.result);
+                }
+
+                reader.readAsDataURL(input.files[0]);
+            }
+        }
+    </script>
+    <script type="text/javascript">
+        $(function() {
+            $("#imgInp_1").on('change', function(){
+                readURL_1(this);
+            });
+        });
+
+        function readURL_1(input) {
+            if (input.files && input.files[0]) {
+                var reader = new FileReader();
+
+                reader.onload = function (e) {
+                    $('#blah_1').attr('src', e.target.result);
+                }
+
+                reader.readAsDataURL(input.files[0]);
+            }
+        }
+
+        function da_1(){
+            document.getElementById("demo").innerHTML = '<div><input type="text" class="co" size="47" placeholder="외 떄문에?"><input type="button" value="전송" id="btn"></div>';
+        }
+        function da_2(){
+            document.getElementById("demo1").innerHTML = '<div><input type="text" class="co" size="47" placeholder="외 떄문에?"><input type="button" value="전송" id="btn"></div>';
+        }
+    </script>
+</head>
+<body>
+<nav class="navbar navbar-default" style="background-color: white; z-index: 5" >
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <div class="container_1" style="width: 200px">
+                <a class="navbar-brand"><img src="img/menu.png" width="100px" height="100px" alt=" "></a>
+                <div class="overlay_1">
+                    <ul class="aaaaa">
+                        <li id="user">
+                            <img src="img/user.png" style="width: 200px; width: 200px"><br>
+                            <div id="userI">
+                                <p>      </p><br>
+                                <p>email:</p><br>
+                                <p>point:</p><br>
+                            </div>
+                        </li>
+                        <li><a class="bbbbb" href="login.html">login</a></li>
+                        <li><a class="bbbbb" href="#contact">Contact</a></li>
+                        <li></li>
+                        <li></li>
+                        <li></li>
+                        <li></li>
+                        <li></li>
+                        <li></li>
+                        <li></li>
+                        <li></li>
+                        <li></li>
+                        <li><a class="bbbbb" href="join2.html">join</a></li>
+                        <li><a class="bbbbb" href="#about">About</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <ul class="nav navbar-nav" style="margin-left: 170px;z-index:5;">
+            <li><a href="#"><img src="img/asdasdasdasdasdasdasd.png" height="100px" ></a></li>
+        </ul>
+        <ul class="nav navbar-nav navbar-right">
+            <li><input onclick="a();" type="image" src="img/logout.png" height="100px" width="90px" style="padding-top: 30px; padding-right: 25px"></li>
+        </ul>
+    </div>
+</nav>
+<div>
+    <div id="floatdiv">
+        <ul>
+            <a href="upload.html"><img src="img/add.png" height="100px" width="100px" ></a>
+        </ul>
+    </div>
+</div>
+    <div class="first_P">
+        <form id="form1" runat="server">
+            <img src="img/back.png" style=" border: 5px solid #000000">
+            <img id="blah" src="#" alt="" width="275px" height="275px" style=" margin-left: -290px; padding-bottom: 5px; padding-left: 4.5px"/><br>
+            <div class="fileUpload btn btn-primary">
+                <span>Upload</span>
+                <input type="file" class="upload" />
+            </div>
+        </form>
+        <textarea name="first" id="first" cols="37" rows="5" style="margin-left: 0.5px" placeholder="할말 없소??"></textarea><br>
+        <input type="text"  size="36" placeholder="가격이 얼마요."/>
+    </div>
+    <img src="img/8080.png" height="80px" width="80px" class="vs">
+    <div class="second_P">
+        <form id="form2" runat="server">
+            <img src="img/back.png" style=" border: 5px solid #000000">
+            <img id="blah_1" src="#" alt="" width="275px" height="275px" style=" margin-left: -290px; padding-bottom: 5px; padding-left: 4.5px"/><br>
+            <div class="fileUpload btn btn-primary">
+                <span>Upload</span>
+                <input type="file" class="upload" />
+            </div>
+        </form>
+        <textarea name="first" id="second" cols="38" rows="5" style="margin-left: 0.5px" placeholder="할말 없소??"></textarea><br>
+        <input type="text"  size="37" placeholder="가격이 얼마요."/>
+    </div>
+<div style="margin-left: 15%; margin-top: 200px">
+    <strong><p style="font-size: 27px; ">point:<input type="text" size="64" style="font-size: 16px"></p></strong>
+</div>
+<a href="#" class="myButton">green</a>
+</body>
+</html>

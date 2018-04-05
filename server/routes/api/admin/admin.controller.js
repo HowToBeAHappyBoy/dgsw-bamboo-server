@@ -6,6 +6,39 @@ const {
 }=require('../../../config.json');
 fb.setAccessToken(accessToken);
 
+exports.count=async (req,res)=>{
+    try{
+        let count=await bPost.find({
+            "isAllow":false
+        }).count();
+        console.log(count);
+        if(count==false){
+            const result={
+                "status":204,
+                "code":0,
+                "desc":"result not found"
+            };
+            return res.status(204).json(result);
+        }
+        const result={
+            "status":200,
+            "code":0,
+            "count":count,
+            "desc":"successful count"
+        };
+        return res.status(200).json(result);
+    }catch(error){
+        console.log(error);
+        const result={
+            "status":500,
+            "code":0,
+            "desc":"unknown error 서지녁에게 문의할 것",
+            "error":error
+        };
+        console.log(error);
+        res.status(500).json(result);
+    }
+}
 
 exports.readPost=async (req,res) =>{
     const id=parseInt(req.params.id);
@@ -19,6 +52,7 @@ exports.readPost=async (req,res) =>{
                 "code":0,
                 "desc":"result not found"
             };
+        }
         let posted=new Array(post.length);
         for(let i=0;i<post.length;i++){
             let writeDate=post[i].writeDate.toLocaleString();
@@ -28,8 +62,6 @@ exports.readPost=async (req,res) =>{
                 "writeDate":writeDate,
                 "isAllow":post[i].isAllow
             }
-        }
-            return res.status(204).json(result);
         }
         const result={
             "status":200,

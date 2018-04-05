@@ -1,0 +1,147 @@
+header img{
+    display: block;
+    margin-right: auto;
+    margin-left: auto;
+    margin-top: 50px;
+}
+article{
+    margin-top: 40px;
+    display: block;
+    margin-right: auto;
+    margin-left: auto;
+    width: 700px;
+    border: 1.5px solid #CCC;
+    text-align: center;
+    font-family: "배달의민족 한나는 열한살";
+    font-size: 50px;
+}
+article p{
+    margin-left: 0;
+    margin-right: 0;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    font-size: 50px;
+}
+.line{
+    border-top: 1px solid #CCC;
+    margin-bottom: 2px;
+}
+.noline{
+    font-size: 15px;
+    border: none;
+    height: 70px;
+}
+.bt{
+    margin-left: 10px;
+    height: 20px;
+    width: 40px;
+    background-color: white;
+    border: 2px solid #CCC;
+}
+.join{
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 20px;
+    height: 40px;
+    width: 120px;
+    background-color: white;
+    border: 2px solid #CCC;
+}
+.co{
+    margin-left: 10px;
+}
+.bar{
+    height: 100px;
+    background-color: #7fc3f2;
+}
+
+.center{
+    display: block;
+    margin-right: auto;
+    margin-left: auto;
+}
+article{
+    margin-top: 40px;
+    display: block;
+    margin-right: auto;
+    margin-left: auto;
+    width: 400px;
+    border: 1.5px solid #CCC;
+    text-align: center;
+    font-family: "배달의민족 한나는 열한살";
+    font-size: 24px;
+}
+article p{
+    margin-left: 0;
+    margin-right: 0;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+.line{
+    border-top: 1px solid #CCC;
+    margin-bottom: 2px;
+}
+.noline{
+    border: none;
+    height:40px;
+}
+.bt{
+    margin-left: 10px;
+    height: 30px;
+    width: 60px;
+    background-color: white;
+    border: 2px solid #CCC;
+}
+.bt2{
+    margin-left: 10px;
+    height: 30px;
+    width: 70px;
+    background-color: white;
+    border: 2px solid #CCC;
+}
+.join{
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 20px;
+    height: 40px;
+    width: 120px;
+    background-color: white;
+    border: 2px solid #CCC;
+}
+body{
+    margin: 0;
+    padding: 0;
+}
+a{
+    display: block;
+    margin-top: 10px;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+    text-decoration: none;
+}
+button{
+    display: block;
+    margin-right: auto;
+    margin-left: auto;
+}
+.bt3{
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    height: 30px;
+    width: 60px;
+    background-color: white;
+    border: 2px solid #CCC;
+}
+.left{
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+header li{
+    list-style-type: none;
+    list-style: none;
+}

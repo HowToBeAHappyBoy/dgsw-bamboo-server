@@ -1,6 +1,36 @@
 const aPost=require('../../../database/model/After_post')
 const bPost=require('../../../database/model/Before_post')
 
+exports.count=async (req,res)=>{
+    try{
+        let count=await aPost.find().sort({ "idx":-1 }).limit(1);
+        if(count==false){
+            const result={
+                "status":204,
+                "code":0,
+                "desc":"result not found"
+            };
+            return res.status(204).json(result);
+        }
+        const result={
+            "status":200,
+            "code":0,
+            "count":count[0].idx,
+            "desc":"successful count"
+        };
+        return res.status(200).json(result);
+    }catch(error){
+        console.log(error);
+        const result={
+            "status":500,
+            "code":0,
+            "desc":"unknown error 서지녁에게 문의할 것",
+            "error":error
+        };
+        console.log(error);
+        res.status(500).json(result);
+    }
+}
 exports.readPost=async (req,res)=>{
     const id=parseInt(req.params.id);
     try{

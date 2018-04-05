@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Bootstrap Example</title>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="bootstrap-3.3.2-dist/bootstrap-3.3.2-dist/css/newnew.css">
+    <link rel="stylesheet" href="bootstrap-3.3.2-dist/bootstrap-3.3.2-dist/css/a.css">
+    <link rel="stylesheet" href="bootstrap-3.3.2-dist/bootstrap-3.3.2-dist/css/bootstrap.css" type="text/css">
+    <script>
+        function a() {
+            alert('정말 로그아웃 하시겠읍니까?');
+            b()
+        }
+        function b() {
+            window.open('about:blank','_parent').parent.close();
+        }
+        function da_1(){
+            document.getElementById("demo").innerHTML = '<div><input type="text" class="co" size="27.5" placeholder="외 떄문에?"><input type="button" value="전송" id="btn"><br></div>';
+        }
+        function da_2(){
+            document.getElementById("demo1").innerHTML = '<div><input type="text" class="co" size="27.5" placeholder="외 떄문에?"><input type="button" value="전송" id="btn"></div>';
+        }
+    </script>
+</head>
+<body>
+<nav class="navbar navbar-default" style="background-color: white; z-index: 5" >
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <div class="container_1" style="width: 200px">
+                <a class="navbar-brand"><img src="img/menu.png" width="100px" height="100px" alt=" "></a>
+                <div class="overlay_1">
+                    <ul class="aaaaa">
+                        <li id="user">
+                            <img src="img/user.png" style="width: 200px; width: 200px"><br>
+                            <div id="userI">
+                                <p>      </p><br>
+                                <p>email:</p><br>
+                                <p>point:</p><br>
+                            </div>
+                        </li>
+                        <li><a class="bbbbb" href="login.html">login</a></li>
+                        <li><a class="bbbbb" href="#contact">Contact</a></li>
+                        <li></li>
+                        <li></li>
+                        <li></li>
+                        <li></li>
+                        <li></li>
+                        <li></li>
+                        <li></li>
+                        <li></li>
+                        <li></li>
+                        <li><a class="bbbbb" href="join2.html">join</a></li>
+                        <li><a class="bbbbb" href="#about">About</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <ul class="nav navbar-nav" style="margin-left: 170px;z-index:5;">
+            <li><a href="#"><img src="img/asdasdasdasdasdasdasd.png" height="100px" ></a></li>
+        </ul>
+        <ul class="nav navbar-nav navbar-right">
+            <li><input onclick="a();" type="image" src="img/logout.png" height="100px" width="90px" style="padding-top: 30px; padding-right: 25px"></li>
+        </ul>
+    </div>
+</nav>
+<div>
+    <div id="floatdiv">
+        <ul>
+            <a href="upload.html"><img src="img/add.png" height="100px" width="100px" ></a>
+        </ul>
+    </div>
+</div>
+<ul class="ul">
+    <li class="li">
+        <img src="img/프사.png" style="width: auto;display: block;margin-right: auto;margin-left: auto;margin-top: 50px;"><img src="img/리얼루다가.png" class="vs" alt=""><img src="img/프사.png" class="img" alt="">
+        <div>
+            <p style="font-family: 궁서;color: black; font-size: 30px; font-weight: bolder; padding-bottom: 23px;margin-top: -15px; margin-right:280px;">18,300원</p>
+            <p style="font-family: 궁서;color: black; font-size: 30px; font-weight: bolder;margin-top: -74px; margin-left: 230px">18,000원</p>
+        </div>
+        <button type="submit" onclick="da_1()" class="betle">이게 낳다!</button>
+        <button type="submit" onclick="da_1()" class="betri">이게 낳다!</button>
+
+        <p id="demo"></p>
+        <br>
+    </li>
+
+    <li class="li">
+        <img src="img/프사.png" class="img" alt=""><img src="img/리얼루다가.png" class="vs" alt=""><img src="img/프사.png" class="img" alt="">
+        <div>
+            <p style="font-family: 궁서;color: black; font-size: 30px; font-weight: bolder; padding-bottom: 23px;margin-top: -15px; margin-right:280px;">18,300원</p>
+            <p style="font-family: 궁서;color: black; font-size: 30px; font-weight: bolder;margin-top: -74px; margin-left: 230px">18,000원</p>
+        </div>
+        <button type="submit" class="betle" onclick="da_2()">이게 낳다!</button>
+        <button type="submit" onclick="da_2()" class="betri">이게 낳다!</button>
+        <br>
+        <p id="demo1"></p>
+    </li>
+</ul>
+</body>
+</html>

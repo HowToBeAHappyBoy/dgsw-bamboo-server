@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>가입</title>
+    <link type="text/css" rel="stylesheet" href="bootstrap-3.3.2-dist/bootstrap-3.3.2-dist/css/new.css">
+    <script>
+        function a() {
+            var f=document.asd;
+            if(!f.id.value){
+                alert('id를 입력해주세요');
+                f.id.focus();
+                return;
+            }
+            if(!f.pw.value){
+                alert('비밀 번호를 입력해주세요');
+                f.pw.focus();
+                return;
+            }
+            if(!f.pw2.value){
+                alert('비밀 번호를 재입력해주세요.')
+                f.pw2.focus();
+                return;
+            }
+            if(f.pw.value!=f.pw2.value){
+                alert('비밀 번호와 재입력한 비밀 번호가 일치하지 않습니다');
+                f.pw.focus();
+                return;
+            }
+            location.href="가입2.html";
+        }
+    </script>
+</head>
+<body>
+<header class="bar">
+    <img class="center" src="img/진짜다.png" alt="">
+</header>
+<header style="margin-top: 80px">
+    <a href="index.html"><img src="img/로고3.png" alt=""></a>
+</header>
+<article style="margin-top: 50px">
+    <p>회원 가입</p>
+    <form action="" name="asd">
+        <div class="line">
+            <input class="noline" type="text" name="id" id="id" size="40" placeholder="아이디">
+        </div>
+        <div class="line">
+            <input class="noline" type="password" name="pw" id="pw" size="40" placeholder="비밀 번호">
+        </div>
+        <div class="line">
+            <input class="noline" type="password" name="pw2" id="pw2" size="40" placeholder="비밀 번호 재입력">
+        </div>
+    </form>
+</article>
+<a href="login.html">로그인</a>
+    <button type="submit" class="bt" style="display: block;margin-left: auto;margin-right: auto" onclick="a()">다음</button>
+</body>
+</html>
