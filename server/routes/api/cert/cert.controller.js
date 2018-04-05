@@ -23,6 +23,7 @@ exports.signup= async (req,res)=>{
             "status":201,
             "code":1,
             "desc":"successful signup",
+            "admin":signupedAdmin.name,
             "token":token
         }
         return res.status(201).json(result);
@@ -49,6 +50,7 @@ exports.signin = async (req, res) => {
                 "status":200,
                 "code":1,
                 "desc":"successful login",
+                "admin":admin.name,
                 "token":token
             }
             return res.status(200).json(result);

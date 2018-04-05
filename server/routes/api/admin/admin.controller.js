@@ -1,5 +1,6 @@
 const aPost=require('../../../database/model/After_post')
 const bPost=require('../../../database/model/Before_post')
+const rPost=require('../../../database/model/Reject_post')
 const fb=require('fb');
 const {
     accessToken
@@ -44,7 +45,7 @@ exports.readPost=async (req,res) =>{
     const id=parseInt(req.params.id);
     try{
         let post=await bPost.find({
-            "isAllow":false
+            "isChange":false
         }).sort({ "idx":-1 }).limit(5).skip(id);
         if(post==false){
             const result={
@@ -82,7 +83,8 @@ exports.readPost=async (req,res) =>{
 }
 
 exports.allow=async (req,res)=>{
-    const id=req.params.id;
+    const id=req.body.id;
+    const admin=req.body.admin;
     try{
         const post=await bPost.find({
             "idx":id
@@ -101,9 +103,10 @@ exports.allow=async (req,res)=>{
         const allowed=await aPost.create({
             idx,
             desc,
-            writeDate
+            writeDate,
+            admin
         });
-        const update=await bPost.update({"idx":id},{$set:{"isAllow":true}});
+        const update=await bPost.update({"idx":id},{$set:{"isChange":true}});
         let docs='#대소고_'+idx+'번째_이야기 \n\n\n'+desc;
         fb.api('/feed', 'post', { message:docs }, function (res) {
             if(!res || res.error) {
@@ -136,9 +139,27 @@ exports.allow=async (req,res)=>{
 }
 
 exports.reject=async (req,res)=>{
-    const id=req.body.id;
+    const idx=req.body.id;
+    const admin=req.body.admin;
     try{
-        const update=await bPost.update({"idx":id},{$set:{"isAllow":true}});
+        const post=await bPost.find({
+            "idx":idx
+        });
+        if(post==false){
+            const result={
+                "status":204,
+                "code":0,
+                "desc":"result not found"
+            };
+            return res.status(204).json(result);
+        }
+        const desc=post[0].desc;
+        const rejected=await rPost.create({
+            idx,
+            desc,
+            admin
+        });
+        const update=await bPost.update({"idx":idx},{$set:{"isChange":true}});
         const result={
             "status":201,
             "code":1,

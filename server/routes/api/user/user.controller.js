@@ -81,11 +81,11 @@ exports.sendPost=async (req,res)=>{
         let id=await bPost.find().sort({ "idx":-1 }).limit(1);
         const idx=id[0].idx+1;
         const desc=req.body.desc;
-        const isAllow=false;
+        const isChange=false;
         const post=await bPost.create({
             idx,
             desc,
-            isAllow
+            isChange
         });
         const result={
             "status":201,
