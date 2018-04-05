@@ -78,8 +78,12 @@ exports.readPost=async (req,res)=>{
 
 exports.sendPost=async (req,res)=>{
     try{
-        let id=await bPost.find().sort({ "idx":-1 }).limit(1);
-        const idx=id[0].idx+1;
+        let idx=await bPost.find().sort({ "idx":-1 }).limit(1);
+        if(idx==false){
+            idx=1;
+        }else{
+            idx=idx[0].idx+1;
+        }
         const desc=req.body.desc;
         const isChange=false;
         const post=await bPost.create({

@@ -10,7 +10,7 @@ fb.setAccessToken(accessToken);
 exports.count=async (req,res)=>{
     try{
         let count=await bPost.find({
-            "isAllow":false
+            "isChange":false
         }).count();
         console.log(count);
         if(count==false){
@@ -61,7 +61,7 @@ exports.readPost=async (req,res) =>{
                 "idx":post[i].idx,
                 "desc":post[i].desc,
                 "writeDate":writeDate,
-                "isAllow":post[i].isAllow
+                "isChange":post[i].isChange
             }
         }
         const result={
@@ -89,6 +89,7 @@ exports.allow=async (req,res)=>{
         const post=await bPost.find({
             "idx":id
         });
+        console.log(post);
         if(post==false){
             const result={
                 "status":204,
@@ -97,7 +98,13 @@ exports.allow=async (req,res)=>{
             };
             return res.status(204).json(result);
         }
-        let idx=await aPost.find({}).sort({ "idx":-1 }).limit(1); idx=idx[0].idx+1;
+        let idx=await aPost.find({}).sort({ "idx":-1 }).limit(1);
+        if(idx==false){
+            console.log('aaa');
+            idx=1;
+        }else{
+            idx=idx[0].idx+1;
+        }
         const desc=post[0].desc;
         const writeDate=post[0].writeDate;
         const allowed=await aPost.create({
@@ -132,7 +139,7 @@ exports.allow=async (req,res)=>{
             "status":500,
             "code":0,
             "desc":"unknown error 서지녁에게 문의할 것",
-            "error":error
+            "error":error.message
         };
         res.status(500).json(result);
     }
