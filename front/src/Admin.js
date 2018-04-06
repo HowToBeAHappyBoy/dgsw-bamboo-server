@@ -18,7 +18,7 @@ class Admin extends Component {
     this._getDocs();
   }
   _getCount=async ()=>{
-    const url="http://localhost:80/api/admin/count";
+    const url="http://ec2-13-125-167-78.ap-northeast-2.compute.amazonaws.com/api/admin/count";
     return axios.get(url,{
       headers:{
         Authorization:sessionStorage.getItem('@#!!@!@##!@!@!#!@!')
@@ -53,7 +53,7 @@ class Admin extends Component {
   };
 
   _callApi=()=>{
-    let url='http://localhost:80/api/admin/posted/'+this.state.id;
+    let url='http://ec2-13-125-167-78.ap-northeast-2.compute.amazonaws.com/api/admin/posted/'+this.state.id;
     return axios.get(url,{
       headers:{
         Authorization:sessionStorage.getItem('@#!!@!@##!@!@!#!@!')
@@ -85,14 +85,13 @@ class Admin extends Component {
           <div className="btDiv">
             <button className="button" onClick={this.clicked}>로그아웃</button>
           </div>
-          {console.log(this.state)}
           {docs?this._renderDocs():
             <div className="loading dot">
               <div></div>
               <div></div>
               <div></div>
             </div>}
-            {!docs||this.state.id>=this.state.count?" ":
+            {!docs||this.state.id>=this.state.count||this.state.count===undefined?" ":
           <div className="btDiv">
             <button className="button" onClick={this._getDocs}>더보기</button>
           </div>}

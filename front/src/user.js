@@ -19,7 +19,7 @@ class User extends Component {
   }
 
   _getCount=async ()=>{
-    const url="http://localhost:80/api/user/count";
+    const url="http://ec2-13-125-167-78.ap-northeast-2.compute.amazonaws.com/api/user/count";
     return axios.get(url)
     .then(res=>this.setState({
       count:res.data.count
@@ -49,7 +49,7 @@ class User extends Component {
   };
 
   _callApi=()=>{
-    let url='http://localhost:80/api/user/posted/'+this.state.id;
+    let url='http://ec2-13-125-167-78.ap-northeast-2.compute.amazonaws.com/api/user/posted/'+this.state.id;
     return axios.get(url,{mode:'no-cors'})
     .then((response)=>{
       return response;

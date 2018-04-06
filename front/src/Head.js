@@ -8,8 +8,8 @@ function Head(){
 
         <h2><Link to="/">대소고 대나무숲</Link></h2>
         <ul>
-            <a href=""><li><Link to="/admin">관리자</Link></li></a>
-            <a href=""><li><Link to="/write">제보하기</Link></li></a>
+            <a><li><Link to="/admin">관리자</Link></li></a>
+            <a><li><Link to="/write">제보하기</Link></li></a>
         </ul>
       </div>
     </div>

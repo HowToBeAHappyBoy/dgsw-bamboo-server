@@ -12,7 +12,11 @@ class post extends Component{
     }
 
     handleSubmit(e){
-        axios.post('http://localhost:80/api/user/post',{desc:this.state.value})
+        if(this.state.value===''){
+          alert('좀 아니다 야');
+          e.preventDefault();
+        }else{
+        axios.post('http://ec2-13-125-167-78.ap-northeast-2.compute.amazonaws.com/api/user/post',{desc:this.state.value})
         .then(response=>{
           if(response.status==201){
             alert('제보 성공\n제보된 글은 관리자의 승인 후 게시됩니다');
@@ -26,6 +30,7 @@ class post extends Component{
           })
         .catch(response=>{console.log(response);});
         e.preventDefault();
+        }
     }
 
     handleChange(e){

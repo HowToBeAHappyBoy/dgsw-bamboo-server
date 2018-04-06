@@ -11,24 +11,24 @@ class Login extends Component{
     this.pwChange=this.pwChange.bind(this);
   }
   idChange(e){
-    console.log(e.target.value);
     this.setState({id: e.target.value});
   }
   pwChange(e){
     this.setState({id:this.state.id,pw:e.target.value});
   }
   _login=()=>{
-    let url='http://localhost:80/api/cert/signin';
+    let url='http://ec2-13-125-167-78.ap-northeast-2.compute.amazonaws.com/api/cert/signin';
     return axios.post(url,{id:this.state.id,pw:this.state.pw})
     .then((res)=>{
       if(res.status===200){
         sessionStorage.setItem("@#!!@!@##!@!@!#!@!",res.data.token);
-        window.location="http://dgswbamboo.oa.to"
-      }else{
+        sessionStorage.setItem("@#@#@#",res.data.admin);
+        window.location="http://dgswbamboo.oa.to";
+      }else if(res.status!==200){
         alert('관리자 하고 싶어요?');
       }
     })
-    .catch(err=>err);
+    .catch(err=>alert('관리자 하고 싶어요?'));
   }
     render(){
         return(

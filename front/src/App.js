@@ -4,7 +4,7 @@ import Head from './Head';
 import {BrowserRouter as Router, Route} from 'react-router-dom';
 import User from './user';
 import Post from './post';
-import Login from './Login'
+import Login from './Login';
 
 
 
@@ -20,6 +20,7 @@ class App extends Component {
             <Route exact path="/" component={User}/>
             <Route path="/admin" component={Login}/>
             <Route path="/write" component={Post}/>
+            <Route path="/login" Component={Login}/>
           </div>
         </div>
       </Router>
