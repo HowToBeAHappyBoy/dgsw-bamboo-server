@@ -98,6 +98,14 @@ exports.allow=async (req,res)=>{
             };
             return res.status(204).json(result);
         }
+        if(post[0].isChange===true){
+            const result={
+                "status":232,
+                "code":0,
+                "desc":"result not found"
+            };
+            return res.status(232).json(result);
+        }
         let idx=await aPost.find({}).sort({ "idx":-1 }).limit(1);
         if(idx==false){
             console.log('aaa');
@@ -114,7 +122,7 @@ exports.allow=async (req,res)=>{
             admin
         });
         const update=await bPost.update({"idx":id},{$set:{"isChange":true}});
-        let docs='#대소고_'+idx+'번째_이야기 \n\n\n'+desc;
+        let docs='#대소고_'+idx+'번째_이야기 \n'+writeDate.toLocaleString()+'\n\n'+desc;
         fb.api('/feed', 'post', { message:docs }, function (res) {
             if(!res || res.error) {
             console.log(!res ? 'error occurred' : res.error);
@@ -160,6 +168,14 @@ exports.reject=async (req,res)=>{
             };
             return res.status(204).json(result);
         }
+        if(post[0].isChange===true){
+            const result={
+                "status":232,
+                "code":0,
+                "desc":"result not found"
+            };
+            return res.status(232).json(result);
+        }
         const desc=post[0].desc;
         const rejected=await rPost.create({
             idx,
@@ -178,8 +194,9 @@ exports.reject=async (req,res)=>{
             "status":500,
             "code":0,
             "desc":"unknown error 서지녁에게 문의할 것",
-            "error":error
+            "error":error.message
         };
+        console.log(error.message);
         res.status(500).json(result);
     }
 }

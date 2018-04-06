@@ -1,5 +1,10 @@
 {
     "db_url":"mongodb://localhost:27017/bamboo",
-    "accessToken":"EAANZCos87dRABABupZAO1AQx0AAx3eaqk6Qr6KiFmInSOd7f1OOJqzQimL5nDd9gJDFfVdiQL1uIngAwZBebOX5vSXVlepwZBzFDRvmvWv4nX9AqGGCV4sktygAsHVhlsHVLiZC3T3GZCP0c8dZBwV9r4YKZBLZC2MjAWfL9ZBEENoPQZDZD",
-    "secret":"@!@!@!@!!!@!@!!"
+<<<<<<< HEAD
+    
 }
+=======
+    "accessToken":"",
+    "secret":""
+}
+>>>>>>> b2bcc378a2ed80efcc246cc6efcb59da4cda21e2
