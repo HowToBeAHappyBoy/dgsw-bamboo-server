@@ -1,10 +1,5 @@
 {
     "db_url":"mongodb://localhost:27017/bamboo",
-<<<<<<< HEAD
     
 }
-=======
-    "accessToken":"",
-    "secret":""
-}
->>>>>>> b2bcc378a2ed80efcc246cc6efcb59da4cda21e2
+
