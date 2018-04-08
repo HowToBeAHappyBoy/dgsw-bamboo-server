@@ -16,6 +16,11 @@ class Login extends Component{
   pwChange(e){
     this.setState({id:this.state.id,pw:e.target.value});
   }
+  enterkey=()=> {
+    if (window.event.keyCode == 13) {
+         this._login();
+    }
+  }
   _login=()=>{
     let url='http://ec2-13-125-167-78.ap-northeast-2.compute.amazonaws.com/api/cert/signin';
     return axios.post(url,{id:this.state.id,pw:this.state.pw})
@@ -35,9 +40,9 @@ class Login extends Component{
           <div className="login">
             {sessionStorage.getItem('@#!!@!@##!@!@!#!@!')?<Admin/>:
           <div className="login-page">
-            <div className="form" onEnter={this._login}>
-                  <input className="vla" type="text" value={this.state.id} placeholder="id" onChange={this.idChange}/>
-                <input className="vla" type="password" value={this.state.pw} placeholder="password" onChange={this.pwChange}/>
+            <div className="form">
+                  <input className="vla" type="text" value={this.state.id} placeholder="id" onChange={this.idChange} onKeyPress={this.enterkey} />
+                <input className="vla" type="password" value={this.state.pw} placeholder="password" onChange={this.pwChange} onKeyPress={this.enterkey} />
               <button value="LOGIN" type="submit" onClick={this._login}>LOGIN</button>
           </div>
         </div>
