@@ -35,7 +35,7 @@ class Login extends Component{
           <div className="login">
             {sessionStorage.getItem('@#!!@!@##!@!@!#!@!')?<Admin/>:
           <div className="login-page">
-            <div className="form">
+            <div className="form" onEnter={this._login}>
                   <input className="vla" type="text" value={this.state.id} placeholder="id" onChange={this.idChange}/>
                 <input className="vla" type="password" value={this.state.pw} placeholder="password" onChange={this.pwChange}/>
               <button value="LOGIN" type="submit" onClick={this._login}>LOGIN</button>
