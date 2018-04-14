@@ -89,7 +89,6 @@ exports.allow=async (req,res)=>{
         const post=await bPost.find({
             "idx":id
         });
-        console.log(post);
         if(post==false){
             const result={
                 "status":204,
@@ -106,19 +105,24 @@ exports.allow=async (req,res)=>{
             };
             return res.status(232).json(result);
         }
-        let idx=await aPost.find({}).sort({ "idx":-1 }).limit(1);
+        if(post[0].category==="bamboo"){
+            let idx=await aPost.find({"category":"bamboo"}).sort({ "idx":-1 }).limit(1);
+        }else if(post[0].category==="love"){
+            let idx=await aPost.find({"category":"love"}).sort({ "idx":-1 }).limit(1);
+        }
         if(idx==false){
-            console.log('aaa');
             idx=1;
         }else{
             idx=idx[0].idx+1;
         }
         const desc=post[0].desc;
+        const category=post[0].category;
         const writeDate=post[0].writeDate;
         const allowed=await aPost.create({
             idx,
             desc,
             writeDate,
+            category,
             admin
         });
         const update=await bPost.update({"idx":id},{$set:{"isChange":true}});
@@ -149,6 +153,7 @@ exports.allow=async (req,res)=>{
             "desc":"unknown error 서지녁에게 문의할 것",
             "error":error.message
         };
+        console.log(error.message);
         res.status(500).json(result);
     }
 }

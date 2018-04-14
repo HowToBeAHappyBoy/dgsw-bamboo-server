@@ -85,10 +85,12 @@ exports.sendPost=async (req,res)=>{
             idx=idx[0].idx+1;
         }
         const desc=req.body.desc;
+        const category=req.body.category;
         const isChange=false;
         const post=await bPost.create({
             idx,
             desc,
+            category,
             isChange
         });
         const result={
@@ -102,8 +104,9 @@ exports.sendPost=async (req,res)=>{
             "status":500,
             "code":0,
             "desc":"unknown error 서지녁에게 문의할 것",
-            "error":error
+            "error":error.message
         };
+        console.log(error.message);
         res.status(500).json(result);
     }
 }

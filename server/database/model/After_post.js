@@ -6,6 +6,7 @@ let AfterPost=Schema({
     "desc":{type:String, require:true, unique:false},
     "writeDate":{type:Date,require:true,default:Date.now},
     "allowDate":{type:Date,require:true,default:Date.now},
+    "category":{type:String,require:true},
     "admin":{type:String,require:true}
 },{
     collection:"AfterPost"
