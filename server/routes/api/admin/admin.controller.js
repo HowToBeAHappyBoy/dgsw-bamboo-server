@@ -46,7 +46,7 @@ exports.readPost=async (req,res) =>{
     try{
         let post=await bPost.find({
             "isChange":false
-        }).sort({ "idx":-1 }).limit(5).skip(id);
+        }).sort({ "idx":1 }).limit(5).skip(id);
         if(post==false){
             const result={
                 "status":204,
@@ -105,24 +105,18 @@ exports.allow=async (req,res)=>{
             };
             return res.status(232).json(result);
         }
-        if(post[0].category==="bamboo"){
-            let idx=await aPost.find({"category":"bamboo"}).sort({ "idx":-1 }).limit(1);
-        }else if(post[0].category==="love"){
-            let idx=await aPost.find({"category":"love"}).sort({ "idx":-1 }).limit(1);
-        }
+        let idx=await aPost.find({}).sort({ "idx":-1 }).limit(1);
         if(idx==false){
             idx=1;
         }else{
             idx=idx[0].idx+1;
         }
         const desc=post[0].desc;
-        const category=post[0].category;
         const writeDate=post[0].writeDate;
         const allowed=await aPost.create({
             idx,
             desc,
             writeDate,
-            category,
             admin
         });
         const update=await bPost.update({"idx":id},{$set:{"isChange":true}});
