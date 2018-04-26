@@ -1,7 +1,7 @@
 # API Document
 
 ## 어드민 관련
-- 모든 어드민 API는 Authorization 헤더에 토큰을 넣어야 합니다.
+- 로그인을 제외한 모든 어드민 API는 Authorization 헤더에 토큰을 넣어야 합니다.
 
 ### 로그인
 
